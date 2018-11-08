@@ -6,7 +6,7 @@ public class Turret : MonoBehaviour {
 
     
 
-    public Transform target;
+    private Transform target;
 
     [Header("Attributes")]
     public float range = 15f;
