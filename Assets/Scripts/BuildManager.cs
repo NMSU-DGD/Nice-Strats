@@ -5,10 +5,8 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour {
 
 	public static BuildManager instance;
-	public static GameObject[] BuildableTurrets;
 
 	void Awake(){
-		BuildableTurrets = new GameObject[6];
 		if(instance != null){
 			Debug.LogError("More than one instance of BuildManager");
 		}else{
@@ -16,15 +14,17 @@ public class BuildManager : MonoBehaviour {
 		}
 	}
 
-	public GameObject[] standardTurrets;
-
-
+	public GameObject standardTurret;
+	public GameObject anotherTurret;
+	private GameObject turretToBuild;
 	public void Start(){
-		//turretToBuild = standardTurret;
-		BuildableTurrets = standardTurrets;
+		turretToBuild = standardTurret;
 	}
 
-	public GameObject GetTurretToBuild(int select){
-		return BuildableTurrets[select];
+	public GameObject GetTurretToBuild(){
+		return turretToBuild;
+	}
+	public void SetTurretToBuild(GameObject turret){
+		turretToBuild=turret;
 	}
 }
