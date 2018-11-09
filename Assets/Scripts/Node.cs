@@ -22,7 +22,7 @@ public class Node : MonoBehaviour {
 			Debug.Log("Turret already present");
 			return;
 		}
-		GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
+		GameObject turretToBuild = BuildManager.instance.GetTurretToBuild(0);
 		turret = (GameObject) Instantiate(turretToBuild,trans.position + TurretOffset, trans.rotation);
 	}
 

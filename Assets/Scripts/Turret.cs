@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
-<<<<<<< HEAD
-    
-
-    private Transform target;
-=======
     public Transform target;
->>>>>>> 72d794833ab64107c063354584f958a5b855611c
 
     [Header("Attributes")]
     public float range = 15f;
