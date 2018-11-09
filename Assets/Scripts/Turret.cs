@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
+<<<<<<< HEAD
     
 
     private Transform target;
+=======
+    public Transform target;
+>>>>>>> 72d794833ab64107c063354584f958a5b855611c
 
     [Header("Attributes")]
     public float range = 15f;
@@ -14,21 +18,16 @@ public class Turret : MonoBehaviour {
     private float fireCountdown = 0f;
 
     [Header("Setup")]
-
     public string enemyTag = "Enemy";
-
     public Transform Rotater;
     public float turnSpeed = 10f;
-
     public GameObject bulletFab;
-    public Transform firePoint;
-   
+    public Transform firePointLeft;
+    public Transform firePointRight;
 
 	void Start () {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-
 	}
-	
 	
     void UpdateTarget ()
     {
@@ -54,8 +53,6 @@ public class Turret : MonoBehaviour {
         {
             target = null;
         }
-
-
     }
 
 	void Update () {
@@ -70,33 +67,29 @@ public class Turret : MonoBehaviour {
         Vector3 rotation = Quaternion.Lerp(Rotater.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         Rotater.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        if (fireCountdown <= 0f)
-        {
-
+        if (fireCountdown <= 0f){
             Shoot();
             fireCountdown = 1f / fireRate;
-
         }
 
         fireCountdown -= Time.deltaTime;
 	}
 
-    void Shoot()
-    {
-        GameObject bulletShoot = (GameObject) Instantiate(bulletFab, firePoint.position, firePoint.rotation);
+    void Shoot(){
+        GameObject bulletRight = (GameObject) Instantiate(bulletFab, firePointRight.position, firePointRight.rotation);
+        GameObject bulletLeft =  (GameObject) Instantiate(bulletFab, firePointLeft.position, firePointLeft.rotation);
 
-        Bullet bullet = bulletShoot.GetComponent<Bullet>();
+        Bullet bulletR = bulletRight.GetComponent<Bullet>();
+        Bullet bulletL = bulletLeft.GetComponent<Bullet>();
 
-        if (bullet != null)
-            bullet.Seek(target);
-
-
+        if (bulletR != null || bulletL != null){
+            bulletR.Seek(target);
+            bulletL.Seek(target);
+        }
     }
 
-     void OnDrawGizmosSelected()
-    {
+     void OnDrawGizmosSelected(){
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
-
     }
 }

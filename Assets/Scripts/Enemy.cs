@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 		Vector3 dir = target.position - trans.position;
 		trans.Translate(dir.normalized * speed * Time.deltaTime,Space.World);
 	
-		Debug.Log("Distance from next Waypoint: "+ Vector3.Distance(trans.position, target.position));
+		//Debug.Log("Distance from next Waypoint: "+ Vector3.Distance(trans.position, target.position));
 		if(Vector3.Distance(trans.position, target.position) <= 0.5f ){
 			GetNextWaypoint();
 		}
