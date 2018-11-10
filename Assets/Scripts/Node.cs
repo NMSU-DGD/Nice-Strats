@@ -23,7 +23,11 @@ public class Node : MonoBehaviour {
 			return;
 		}
 		GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-		turret = (GameObject) Instantiate(turretToBuild,trans.position + TurretOffset, trans.rotation);
+		if(turretToBuild != null){
+			turret = (GameObject) Instantiate(turretToBuild,trans.position + TurretOffset, trans.rotation);
+		}else{
+			Debug.Log("Turret not selected");
+		}
 	}
 
 	public void OnMouseEnter(){

@@ -17,16 +17,20 @@ public class Turret2 : MonoBehaviour {
     public string enemyTag = "Enemy";
     public GameObject bulletFab;
     public Transform firePoint;
+    private AudioSource fireSFX;
+    private float pitchLow = 0.8f;
+    private float pitchHigh = 1.1f;
 
     void Start () {
+        fireSFX = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
     }
     //Makes RailGun Traggable
     private void OnMouseDrag()
     {
-        float rotX = Input.GetAxis("Mouse X") * rotation * Mathf.Deg2Rad;
-        transform.Rotate(Vector3.up, -rotX);      
+        float rotX = Input.GetAxis("Mouse X") * rotation * Mathf.Deg2Rad * 10;
+        transform.Rotate(Vector3.up, rotX);      
     }
 
     void UpdateTarget()
@@ -67,6 +71,8 @@ public class Turret2 : MonoBehaviour {
     {
         GameObject bulletShoot = (GameObject)Instantiate(bulletFab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletShoot.GetComponent<Bullet>();
+        fireSFX.pitch = Random.Range(pitchLow,pitchHigh);
+        fireSFX.Play();
         Destroy(bulletShoot, 1);
       //  if (bullet != null)
           //  bullet.Seek(target);

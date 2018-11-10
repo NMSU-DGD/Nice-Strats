@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,25 +13,29 @@ public class CameraController : MonoBehaviour {
 	public float panSpeed = 30.0f;
 	public float zoomFact = 50.0f;
 	public float panBoarderThickness = 10.0f;
-	public bool PanLock = false;
-	public bool ZoomLock = false;
+	public Text LockText;
+	private bool PanLock = true;
+	private bool ZoomLock = true;
 	public Boundary boundary;
 	private Transform trans;
 	// Use this for initialization
 	void Start () {
 		trans = GetComponent<Transform>();
+		LockText.text = "Camera Locks\n" + ZoomLock + " :Zoom\n" + PanLock + " :Pan\t";
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		Debug.Log("Scroll: " + scroll);
+		//Debug.Log("Scroll: " + scroll);
 		if(Input.GetKeyDown(KeyCode.Space)){
 			PanLock = !PanLock;
 		}
 		if(Input.GetKeyDown(KeyCode.LeftAlt)){
 			ZoomLock = !ZoomLock;
 		}
+		LockText.text = "Camera Locks\n" + ZoomLock + " :Zoom\n" + PanLock +" :Pan\t";
 		if(PanLock == false){
 			//Vector3 movement;
 			if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBoarderThickness){

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour {
 
 	public static BuildManager instance;
+	[Header("Turret List")]
+	public GameObject[] Buildable;
 
 	void Awake(){
 		if(instance != null){
@@ -14,17 +16,19 @@ public class BuildManager : MonoBehaviour {
 		}
 	}
 
-	public GameObject standardTurret;
-	public GameObject anotherTurret;
+	//public GameObject standardTurret;
+	//public GameObject anotherTurret;
 	private GameObject turretToBuild;
 	public void Start(){
-		turretToBuild = standardTurret;
+		//turretToBuild = standardTurret;
 	}
 
 	public GameObject GetTurretToBuild(){
+		//Debug.Log("in GetTurretToBuild");
 		return turretToBuild;
 	}
-	public void SetTurretToBuild(GameObject turret){
-		turretToBuild=turret;
+	public void SetTurretToBuild(int select){
+		//Debug.Log("setting turretToBuild\nIndex value: " + select);
+		turretToBuild = Buildable[select];
 	}
 }

@@ -18,8 +18,12 @@ public class Turret : MonoBehaviour {
     public GameObject bulletFab;
     public Transform firePointLeft;
     public Transform firePointRight;
+    private AudioSource aud;
+    private float pitchLowRange=0.9f;
+    private float pitchHighRange=1.1f;
 
 	void Start () {
+        aud = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 	
@@ -72,11 +76,13 @@ public class Turret : MonoBehaviour {
     void Shoot(){
         GameObject bulletRight = (GameObject) Instantiate(bulletFab, firePointRight.position, firePointRight.rotation);
         GameObject bulletLeft =  (GameObject) Instantiate(bulletFab, firePointLeft.position, firePointLeft.rotation);
-
+        
         Bullet bulletR = bulletRight.GetComponent<Bullet>();
         Bullet bulletL = bulletLeft.GetComponent<Bullet>();
 
         if (bulletR != null || bulletL != null){
+            aud.pitch = Random.Range(pitchLowRange,pitchHighRange);
+            aud.Play();
             bulletR.Seek(target);
             bulletL.Seek(target);
         }
