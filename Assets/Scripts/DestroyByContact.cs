@@ -26,6 +26,7 @@ public class DestroyByContact : MonoBehaviour {
 		else if(other.tag == "End Point"){
 			Destroy(gameObject);
 			gameController.addFailed();
+			
 		}
 
 	}

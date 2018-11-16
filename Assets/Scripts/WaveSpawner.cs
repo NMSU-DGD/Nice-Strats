@@ -8,17 +8,28 @@ public class WaveSpawner : MonoBehaviour {
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5.0f;
+	public static bool Win;
 	public int MaxWaves=5;
 	private float countdown = 2.0f;
 	private int waveIndex = 0;
 	
 	// Update is called once per frame
+	public void Start(){
+		Win = false;
+	}
 	public void Update () {
-		
-		if(countdown <= 0 && waveIndex <= MaxWaves ){
+		Debug.Log("Wave: " + waveIndex);
+		Debug.Log("Max Waves: " + MaxWaves);
+		if(waveIndex >= MaxWaves){
+			Debug.Log("Win");
+			Win = true;
+		}
+
+		if(countdown <= 0 && waveIndex < MaxWaves && !GameController.isGameOver){
 			StartCoroutine(SpawnWave());
 			countdown = timeBetweenWaves;
 		}
+
 		countdown -= Time.deltaTime;
 	}
 
