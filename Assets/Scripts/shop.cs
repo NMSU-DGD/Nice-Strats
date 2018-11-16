@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class shop : MonoBehaviour {
 
-	//BuildManager buildManager;
+	private BuildManager buildManager;
 
-	public void Start(){}
+	public void Start(){
+		buildManager = BuildManager.instance;
+	}
 
 	public void PurchaseStandardTurret(){
 		Debug.Log("Standard Turret Purchased");
-		BuildManager.instance.SetTurretToBuild(0);
+		buildManager.SelectTurretToBuild(0);
 	}
 
 	public void PurchaseRailgunTurret(){
-		Debug.Log("Standard Turret Purchased");
-		BuildManager.instance.SetTurretToBuild(1);
+		Debug.Log("Railgun Turret Purchased");
+		buildManager.SelectTurretToBuild(1);
 	}
 }

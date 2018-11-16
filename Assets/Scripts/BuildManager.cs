@@ -5,8 +5,10 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour {
 
 	public static BuildManager instance;
+
+
 	[Header("Turret List")]
-	public GameObject[] Buildable;
+	public TurretBlueprint[] Buildable;
 
 	void Awake(){
 		if(instance != null){
@@ -18,16 +20,21 @@ public class BuildManager : MonoBehaviour {
 
 	//public GameObject standardTurret;
 	//public GameObject anotherTurret;
-	private GameObject turretToBuild;
-	public void Start(){
-		//turretToBuild = standardTurret;
+	private TurretBlueprint turretToBuild;
+
+	public void BuildTurretOn( Node node){
+		if(PlayerStats.Currency < turretToBuild.cost){
+			Debug.Log("Not enough money to build");
+		}else{
+			PlayerStats.Currency -= turretToBuild.cost;
+			GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+			node.Turret = turret;
+			Debug.Log("Turret build! Money left: " + PlayerStats.Currency);
+		}
 	}
 
-	public GameObject GetTurretToBuild(){
-		//Debug.Log("in GetTurretToBuild");
-		return turretToBuild;
-	}
-	public void SetTurretToBuild(int select){
+	public bool CanBuild{get{return turretToBuild != null;}}
+	public void SelectTurretToBuild(int select){
 		//Debug.Log("setting turretToBuild\nIndex value: " + select);
 		turretToBuild = Buildable[select];
 	}

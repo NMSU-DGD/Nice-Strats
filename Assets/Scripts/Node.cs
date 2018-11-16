@@ -1,36 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
 	public Color ActiveColor;
 	private Color InActiveColor;
-	private GameObject turret;
+	[Header("Optional")]
+	public GameObject Turret;
+
 	public Vector3 TurretOffset;
 	private Renderer rend;
 	private Transform trans;
 
+	private BuildManager buildManager;
 	void Start(){
+		buildManager = BuildManager.instance;
 		trans = GetComponent<Transform>();
 		rend = GetComponent<Renderer>();
 		InActiveColor = rend.material.color;
 	}
 
+	public Vector3 GetBuildPosition(){
+		return trans.position + TurretOffset;
+	}
+
 	public void OnMouseDown(){
-		if(turret != null){
+		if(EventSystem.current.IsPointerOverGameObject()){
+			return;
+		}
+		if(!buildManager.CanBuild){
+			return;
+		}
+		if(Turret != null){
 			Debug.Log("Turret already present");
 			return;
 		}
-		GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-		if(turretToBuild != null){
-			turret = (GameObject) Instantiate(turretToBuild,trans.position + TurretOffset, trans.rotation);
-		}else{
-			Debug.Log("Turret not selected");
-		}
+		
+		buildManager.BuildTurretOn(this);
+	
 	}
 
 	public void OnMouseEnter(){
+		if(EventSystem.current.IsPointerOverGameObject()){
+			return;
+		}
+		if(!buildManager.CanBuild){
+			return;
+		}
+
 		rend.material.color = ActiveColor;
 
 	}
