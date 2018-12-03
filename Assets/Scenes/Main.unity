@@ -4185,12 +4185,12 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58.10341
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
@@ -4210,7 +4210,7 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
@@ -4220,7 +4220,7 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
@@ -4542,7 +4542,7 @@ MonoBehaviour:
   enemy: {fileID: 4915426256089694, guid: 588724526e37a4eafa7912123f79ac01, type: 2}
   spawnPoint: {fileID: 36453826}
   timeBetweenWaves: 8
-  MaxWaves: 1
+  MaxWaves: 10
 --- !u!4 &730675937
 Transform:
   m_ObjectHideFlags: 0
@@ -4575,7 +4575,7 @@ MonoBehaviour:
   GameOver: {fileID: 1937544162}
   score: 0
   failed: 0
-  maxFail: 1
+  maxFail: 50
 --- !u!114 &730675939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8832,12 +8832,12 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 135
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -58.10341
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
@@ -8857,7 +8857,7 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
@@ -8867,7 +8867,7 @@ Prefab:
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224196315343960186, guid: 3f41ec3da9ecbc3499faf823edd1915b,
         type: 2}
