@@ -34,6 +34,9 @@ public class Node : MonoBehaviour {
 			return;
 		}
 		if(Turret != null){
+			if(Input.GetKey(KeyCode.LeftShift)){
+				buildManager.DestroyTurretOn(this);
+			}
 			Debug.Log("Turret already present");
 			return;
 		}

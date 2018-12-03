@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
 
 	public Text ScoreText;
 	public Text FailedText;
+	public Text MoneyText;
 	public GameObject RestartButton;
 	public GameObject ExitButton;
 	public Text GameOver;
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour {
 		//
 		UpdateScore();
 		UpdateFailed();
+		UpdateMoney();
 		UpdateGameOver();
 	}
 	
@@ -35,6 +37,7 @@ public class GameController : MonoBehaviour {
 			RestartButton.SetActive(true);
 			ExitButton.SetActive(true);
 		}
+		UpdateMoney();
 		UpdateGameOver();
 	}
 
@@ -45,6 +48,11 @@ public class GameController : MonoBehaviour {
 	public void UpdateFailed(){
 		FailedText.text = "Failed: " + failed;
 	}
+
+	public void UpdateMoney(){
+		MoneyText.text = "Money: " + PlayerStats.Currency;
+	}
+
 	public void UpdateGameOver(){
 		if(!isGameOver){
 			GameOver.text = "";

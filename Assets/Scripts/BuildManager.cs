@@ -33,6 +33,12 @@ public class BuildManager : MonoBehaviour {
 		}
 	}
 
+	public void DestroyTurretOn(Node node){
+		PlayerStats.Currency += (int)(turretToBuild.cost * 0.75f);
+		Destroy(node.Turret);
+		node.Turret = null;
+	}
+
 	public bool CanBuild{get{return turretToBuild != null;}}
 	public void SelectTurretToBuild(int select){
 		//Debug.Log("setting turretToBuild\nIndex value: " + select);

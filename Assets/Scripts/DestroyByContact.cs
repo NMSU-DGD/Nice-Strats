@@ -22,6 +22,7 @@ public class DestroyByContact : MonoBehaviour {
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 			gameController.addScore();
+			PlayerStats.Currency += 10;
 		}
 		else if(other.tag == "End Point"){
 			Destroy(gameObject);
